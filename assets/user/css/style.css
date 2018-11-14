@@ -1,0 +1,2798 @@
+/*
+Copyright (c) 2018
+------------------------------------------------------------------
+[Master Default Stylesheet]
+-------------------------------------------------------------------
+
+[Table of contents]
+
+1. body
+2. authentication
+3. header
+4. category page
+5. doctor listing
+6. doctor single
+7. profile
+8. search form
+9. appointment page
+10. plans
+11. add clinic
+ .
+ .
+ .
+50. typography
+51. responsive
+-------------------------------------------------------------------*/
+
+/***********************************************************************************
+1. body start
+***********************************************************************************/
+body{
+    background-color: #ffffff;	
+	font-family: 'Lato', sans-serif;
+    color: #484848;
+    font-size: 14px;
+    -webkit-font-smoothing: antialiased !important;
+	-moz-osx-font-smoothing: grayscale !important;
+	text-rendering: optimizeLegibility !important; 
+}
+a {
+	color: #3e9bd6;
+	text-decoration: none;
+	cursor:pointer;
+}
+a:hover, a:focus {
+	text-decoration: none;  
+}
+a:focus {
+	outline: none;
+}
+.h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6{
+	font-family: 'Lato', sans-serif;
+	color:#27292c; 
+}
+.dd_main_wrapper{
+    height: 100%;
+    padding-top: 82px;
+}
+body.dd_authentication > div.ng-scope{
+    height: 100%;
+}
+
+.dd_loading_wrapper{
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    overflow: hidden;
+    z-index: 99999;
+    background-color: #ffffff;
+}
+.dd_loading_wrapper > .dd_loading_inner{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin: -150px 0 0 -200px; 
+}
+.dd_loading_wrapper > .dd_loading_inner > img{
+    width: 400px;
+    height: 300px;
+}
+/***********************************************************************************
+1. body end
+***********************************************************************************/
+
+/***********************************************************************************
+2. authentication start
+***********************************************************************************/
+.dd_authentication{
+    background-image: url('../images/auth_bg.jpg');
+    background-repeat: no-repeat;
+    background-position: center;
+}
+.dd_authentication .dd_main_wrapper{
+    text-align: center;
+    padding: 0;
+}
+.dd_authentication .dd_main_wrapper:after{
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: -moz-linear-gradient( 43deg, rgb(20,199,172) 0%, rgb(13,214,232) 100%);
+    background-image: -webkit-linear-gradient( 43deg, rgb(20,199,172) 0%, rgb(13,214,232) 100%);
+    background-image: -ms-linear-gradient( 43deg, rgb(20,199,172) 0%, rgb(13,214,232) 100%);
+    z-index: -1;
+    opacity: 0.68;
+}
+
+.dd_authentication .dd_main_wrapper:before{
+    content: '';
+    display: inline-block;
+    height: 100%;
+    vertical-align: middle;
+}
+.dd_auth_box_wrapper{
+    position: relative;
+    display: inline-block;
+    vertical-align: middle;
+    opacity: 0;
+    visibility: hidden;
+    text-align: left;
+    margin: 30px auto;
+}
+.dd_site_loaded .dd_auth_box_wrapper{
+    opacity: 1;
+    visibility: visible;
+    animation: dd_authentication_anim 0.3s;
+    animation-fill-mode: forwards;
+}
+@keyframes dd_authentication_anim{
+    0%{transform: scale(0.95); opacity: 0;}
+    100%{transform: scale(1); opacity: 1;}
+}
+
+.dd_auth_box{
+    background-color: #ffffff;
+}
+
+.dd_auth_box:after{
+    content: "";
+    display: table;
+    width: 100%;
+}
+.dd_auth_box > .dd_auth_image{
+    width:55%;
+    float: left;
+}
+.dd_auth_box > .dd_auth_image > img{
+    width: 100%;
+}
+.dd_auth_box > .dd_auth_form{
+    width:45%;
+    float: left;
+    padding: 50px 80px 30px;
+}
+
+.dd_auth_tab_wrapper > .dd_auth_tab_link > ul{
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display:block;
+}
+.dd_auth_tab_wrapper > .dd_auth_tab_link > ul > li{
+    display: inline-block;
+	vertical-align: middle;
+}
+.dd_auth_tab_wrapper > .dd_auth_tab_link > ul > li > a{
+    display: inline-block;
+    font-size: 25px;
+    color: #e6e6e6;
+	vertical-align: middle;
+}
+.dd_auth_tab_wrapper > .dd_auth_tab_link > ul > li:after{
+    content: "/";
+    display: inline-block;
+    font-size: 25px;
+    color: #e6e6e6;
+    margin: 0 10px;
+	vertical-align: middle;
+}
+.dd_auth_tab_wrapper > .dd_auth_tab_link > ul > li:last-child:after{
+    display: none;
+}
+.dd_auth_tab_wrapper > .dd_auth_tab_link > ul > li > a.active{
+    color: #1bd8e9;
+}
+.dd_auth_tab_wrapper > .dd_auth_tab_panel{
+    padding: 30px 0; 
+}
+.dd_auth_tab_wrapper > .dd_auth_tab_panel .dd_tab_panel{
+    -webkit-animation: dd_tab_panel_anim 0.3s;
+    -moz-animation: dd_tab_panel_anim 0.3s;
+    animation: dd_tab_panel_anim 0.3s;
+}
+@-webkit-keyframes dd_tab_panel_anim {
+    0%{-webkit-transform: translateY(-10px) scale(0.95);}
+    100%{-webkit-transform: translateY(0px) scale(1);}
+}
+@-moz-keyframes dd_tab_panel_anim {
+    0%{-moz-transform: translateY(-10px) scale(0.95);}
+    100%{-moz-transform: translateY(0px) scale(1);}
+}
+@keyframes dd_tab_panel_anim {
+    0%{transform: translateY(-10px) scale(0.95);}
+    100%{transform: translateY(0px) scale(1);}
+}
+
+.forgot_password{
+    font-size: 14px;
+    color: #b6b6b6;
+}
+.forgot_password:hover{
+    color: #1bd8e9;
+}
+.dd_ORdivider{
+    font-size: 20px;
+    color: #b6b6b6;
+    position: relative;
+    z-index: 1;
+    text-align: center;
+}
+.dd_ORdivider::before{
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 50%;
+    width: 100%;
+    height: 1px;
+    background-color: #b6b6b6;
+    z-index: -1;
+}
+.dd_ORdivider > span{
+    width: 40px;
+    height: 30px;
+    line-height: 27px;
+    text-align: center;
+    background-color: #ffffff;
+    display: inline-block;
+}
+
+.dd_auth_social{
+    text-align: center;
+}
+.dd_auth_social a{
+    width: 50%;
+    display: inline-block;
+}
+.dd_auth_social a:hover{
+    opacity: 0.9;
+}
+.dd_auth_social a img{
+    width: 100%;
+}
+
+/***********************************************************************************
+2. authentication end
+***********************************************************************************/
+
+/***********************************************************************************
+3. header start
+***********************************************************************************/
+.dd_header{
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background-color: #ffffff;
+    box-shadow: 0px 3px 7px 0px rgba(0, 0, 0, 0.08);
+    z-index: 999;
+}
+.dd_header .dd_logo{
+    float: left;
+    margin-top: 22px;
+    margin-right: 80px;
+}
+.dd_header .dd_logo img{
+    max-width: 235px;
+	width:100%;
+}
+.dd_header .dd_nav{
+    float: left;
+}
+.dd_header .dd_nav > ul{
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: block;
+}
+.dd_header .dd_nav > ul > li{
+    display: inline-block;
+}
+.dd_header .dd_nav > ul > li > a{
+    display: block;
+    color: #a8abb9;
+    font-size: 16px;
+    padding: 30px 10px;
+    position: relative;
+}
+.dd_header .dd_nav > ul > li > a.active,
+.dd_header .dd_nav > ul > li > a:hover{
+    color: #252323;
+}
+.dd_header .dd_nav > ul > li > a:after{
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 50%;
+    right: 50%;
+    height: 3px;
+    display: block;
+    background-image: -moz-linear-gradient( 3deg, rgb(20,199,172) 0%, rgb(13,214,232) 100%);
+    background-image: -webkit-linear-gradient( 3deg, rgb(20,199,172) 0%, rgb(13,214,232) 100%);
+    background-image: -ms-linear-gradient( 3deg, rgb(20,199,172) 0%, rgb(13,214,232) 100%);
+    transition: all 0.3s;
+}
+.dd_header .dd_nav > ul > li > a:hover:after,
+.dd_header .dd_nav > ul > li > a.active:after{
+    left: 0;
+    right: 0;
+}
+
+.dd_header_right{
+    float: right;
+}
+.dd_header_right > .dd_profile_dd{
+    display: inline-block;
+    margin-top: 20px;
+    cursor: pointer;
+}
+.dd_header_right > .dd_profile_dd > .icon{
+    width: 40px;
+    height: 40px;
+    border-radius: 40px;
+    float: left;
+    margin-right: 10px;
+}
+.dd_header_right > .dd_profile_dd > .icon > img{
+    width: 40px;
+    height: 40px;
+    border-radius: 40px;
+    display: none;
+}
+.dd_header_right > .dd_profile_dd > .icon > .name_initial{
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    display: inline-block;
+    border-radius: 40px;
+    font-size: 20px;
+    color: #ffffff;
+    text-align: center;
+    background-image: -moz-linear-gradient( 3deg, rgb(20,199,172) 0%, rgb(13,214,232) 100%);
+    background-image: -webkit-linear-gradient( 3deg, rgb(20,199,172) 0%, rgb(13,214,232) 100%);
+    background-image: -ms-linear-gradient( 3deg, rgb(20,199,172) 0%, rgb(13,214,232) 100%);
+}
+.dd_header_right > .dd_profile_dd > .icon.has_image > img{
+    display: block;
+	width: 40px;
+    height: 40px;
+    line-height: 40px;
+	position:absolute;
+	top:0;
+	left:0;
+}
+.dd_header_right > .dd_profile_dd > label{
+    float: left;
+    line-height: 40px;
+    font-weight: 600;
+    color: #13c9b4;
+}
+.dd_header_right > .dd_profile_dd > label > a{
+    color: #13c9b4;
+    font-size: 16px;
+}
+.dd_header_right > .dd_profile_dd > label:after{
+    content: "";
+    display: inline-block;
+    border-top: 6px solid #13c9b4;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    margin-left: 5px;
+    -webkit-transform: translateY(-1px) rotateX(0deg);
+    -moz-transform: translateY(-1px) rotateX(0deg);
+    transform: translateY(-1px) rotateX(0deg);
+    -webkit-transition: all 0.3s;
+    -moz-transition: all 0.3s;
+    transition: all 0.3s;
+}
+.dd_header_right > .dd_profile_dd:hover > label:after{
+    -webkit-transform: translateY(-1px) rotateX(180deg);
+    -moz-transform: translateY(-1px) rotateX(180deg);
+    transform: translateY(-1px) rotateX(180deg);
+}
+
+.dd_nav_toggle{
+    display: none;
+    width: 26px;
+    height: 25px;
+    padding-top: 2px;
+    cursor: pointer;
+    margin-left: 15px;
+    -webkit-transform: translateY(-12px);
+    -moz-transform: translateY(-12px);
+    transform: translateY(-12px);
+}
+.dd_nav_toggle > span{
+    display: block;
+    width: 18px;
+    height: 2px;
+    border-radius: 12px;
+    background-color: #11ccc2;
+    margin: 4px auto;
+    -webkit-transition: all 0.3s;
+    -moz-transition: all 0.3s;
+    transition: all 0.3s;
+}
+
+.dd_sidebar_open .dd_nav_toggle > span:nth-child(1){
+    -webkit-transform: rotate(45deg);
+    -moz-transform: rotate(45deg);
+    transform: rotate(45deg);
+    -webkit-transform-origin: 2px 4px;
+    -moz-transform-origin: 2px 4px;
+    transform-origin: 2px 4px;
+}
+.dd_sidebar_open .dd_nav_toggle > span:nth-child(2){
+    opacity: 0;
+    -webkit-transform: translateX(5px);
+    -moz-transform: translateX(5px);
+    transform: translateX(5px);
+}
+.dd_sidebar_open .dd_nav_toggle > span:nth-child(3){
+    -webkit-transform: rotate(-45deg);
+    -moz-transform: rotate(-45deg);
+    transform: rotate(-45deg);
+    -webkit-transform-origin: 2px -2px;
+    -moz-transform-origin: 2px -2px;
+    transform-origin: 2px -2px;
+}
+
+/***********************************************************************************
+3. header end
+***********************************************************************************/
+
+
+/***********************************************************************************
+4. category page start
+***********************************************************************************/
+.dd_category_wrapper > h3{
+    margin: 0;
+    font-size: 20px;
+    margin-bottom: 15px;
+    font-weight: 400;
+}
+.dd_category_wrapper .panel-group .panel{
+    border-radius: 0;
+    box-shadow: none;
+    border-color: #d9d9d9;
+}
+.dd_category_wrapper .panel-default > .panel-heading{
+    padding: 0px;
+    background-color: transparent;
+}
+.dd_category_wrapper .panel-default > .panel-heading > .panel-title > a{
+    padding: 20px;
+    display: block;
+    position: relative;
+    font-size: 18px;
+}
+.dd_category_wrapper .panel-default > .panel-heading > .panel-title > a:after{
+    content: "";
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    right: 10px;
+    top: 18px;
+    background-image: url('../images/angle_down.svg');
+    background-position: center;
+    background-repeat: no-repeat;
+    -webkit-transition: all 0.3s;
+    -moz-transition: all 0.3s;
+    transition: all 0.3s;
+}
+.dd_category_wrapper .panel-default > .panel-heading > .panel-title > a[aria-expanded="true"]:after{
+    -webkit-transform: rotateX(180deg);
+    -moz-transform: rotateX(180deg);
+    transform: rotateX(180deg);
+}
+.dd_category_wrapper .panel-default > .panel-heading > .panel-title > a[aria-expanded="true"]{
+    background-color: #f5f5f5;
+}
+.dd_category_wrapper .panel-default > .panel-heading > .panel-title > a > img{
+    max-width: 25px;
+    max-height: 25px;
+    margin-right: 15px;
+}
+.dd_category_wrapper .panel-body{
+    padding: 0;
+}
+.dd_category_wrapper .list-group{
+    margin-bottom: 0;
+    list-style: none;
+}
+.dd_category_wrapper .list-group .dd_no_subcategory{
+	display: block;
+    padding: 10px 15px;
+}
+.dd_category_wrapper .list-group-item{
+    border: none;
+    border-radius: 0;
+}
+.dd_category_wrapper .list-group-item.active, .dd_category_wrapper .list-group-item.active:focus, .dd_category_wrapper .list-group-item.active:hover{
+	background-color: none;
+    border-color: transparent;	
+	background-image: -moz-linear-gradient( 43deg, rgb(20,199,172) 0%, rgb(13,214,232) 100%);
+    background-image: -webkit-linear-gradient( 43deg, rgb(20,199,172) 0%, rgb(13,214,232) 100%);
+    background-image: -ms-linear-gradient( 43deg, rgb(20,199,172) 0%, rgb(13,214,232) 100%);
+}
+.dd_category_toggle{
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 30px;
+    height: 30px;
+    line-height: 27px;
+    text-align: center;
+    cursor: pointer;
+    z-index: 999;
+    border-radius: 30px;
+    background-image: -moz-linear-gradient( 145deg, rgb(20,199,172) 0%, rgb(13,214,232) 100%);
+    background-image: -webkit-linear-gradient( 145deg, rgb(20,199,172) 0%, rgb(13,214,232) 100%);
+    background-image: -ms-linear-gradient( 145deg, rgb(20,199,172) 0%, rgb(13,214,232) 100%);
+    display: none;
+}
+.dd_category_toggle > svg{
+    width: 16px;
+    height: 16px;
+    vertical-align: middle;
+}
+.dd_category_toggle > svg circle,
+.dd_category_toggle > svg path{
+    fill: #ffffff;
+}
+
+/***********************************************************************************
+4. category page end
+***********************************************************************************/
+
+
+/***********************************************************************************
+5. doctor listing start
+***********************************************************************************/
+.dd_doctor_list_wrapper{
+    margin-bottom: 50px;
+}
+.dd_doctor_box{
+    background-color: #f1f3f5;
+    margin-bottom: 30px;
+    padding: 20px;
+}
+.dd_doctor_box:after{
+    content: "";
+    display: table;
+    width: 100%;
+}
+.dd_doctor_box > .doc_image{
+    width: 220px;
+    float: left;
+    background-position: center;
+    background-size: cover;
+    border: 1px solid #e0e0e0;
+}
+.dd_doctor_box > .doc_image > img{
+    width: 100%;
+    max-height: 220px;
+}
+.dd_doctor_box > .doc_detail{
+    width: calc(100% - 220px);
+    float: left;
+    padding: 0px 20px;
+}
+.dd_doctor_box > .doc_detail > h3{
+    margin: 0;
+    font-size: 18px;
+    color: #0dd5e3;
+    margin-bottom: 5px;
+}
+.dd_doctor_box > .doc_detail > span{
+    color: #a9a2a2;
+}
+.dd_doctor_box > .doc_detail > ul{
+    list-style: none;
+    display: block;
+    padding: 0;
+    margin: 10px auto;
+    font-size: 16px;
+}
+.dd_doctor_box > .doc_detail > ul > li{
+    display: block;
+    margin-bottom: 5px;
+}
+.dd_doctor_box > .doc_detail > ul > li > span{
+    margin-right: 5px;
+}
+.dd_doctor_box > .doc_detail > h4{
+    margin: 0;
+    font-size: 25px;
+    color: #0dd5e3;
+    margin-bottom: 15px;
+}
+.dd_doctor_box > .doc_detail > .btn_wrapper a{
+    margin-right: 15px;
+	margin-bottom: 15px; 
+}
+.dd_doctor_box > .doc_detail > .btn_wrapper a.active{
+    color: #ffffff;
+    border: none;
+    background-image: -moz-linear-gradient( 43deg, rgb(20,199,172) 0%, rgb(13,214,232) 100%);
+    background-image: -webkit-linear-gradient( 43deg, rgb(20,199,172) 0%, rgb(13,214,232) 100%);
+    background-image: -ms-linear-gradient( 43deg, rgb(20,199,172) 0%, rgb(13,214,232) 100%);
+}
+.dd_doctor_box > .doc_detail > .btn_wrapper a.active > .icon > svg path{
+    stroke: #ffffff;
+    stroke-width: 1px;
+}
+
+.dd_review_rating{
+    margin-bottom: 5px;
+}
+.dd_review_rating > label{
+    display: inline-block;
+    font-weight: 400;
+    margin-right: 2px;
+    color: #a0a0a0;
+    font-size: 13px;
+    margin-bottom: 0;
+}
+.dd_review_rating > ul{
+    display: inline-block;
+    list-style: none;
+    padding: 0;
+    margin-bottom: 0;
+    vertical-align: middle;
+}
+.dd_review_rating > ul > li{
+    display: inline-block;
+}
+.dd_review_rating > ul > li > .star{
+    width: 14px;
+    height: 13px;
+    display: block;
+    background-image: url('../images/stars.svg');
+}
+.dd_review_rating > ul > li > .star.active{
+    background-position: -15px 0px;
+}
+
+/* filter start */
+.dd_filter_wrapper{
+    margin-bottom: 13px;
+    text-align: right;
+    position: relative;
+    z-index: 1;
+}
+.dd_filter_wrapper .dd_filter{
+    display: inline-block;
+    color: #b6b6b6;
+    font-size: 18px;
+    cursor: pointer;
+}
+.dd_filter_wrapper .dd_filter .icon{
+    margin-right: 5px;
+}
+/* filter end */
+
+.pagination > li > a, .pagination > li > span{
+    color: #808080;
+	width: 45px;
+	height: 45px;
+	line-height: 45px;
+	text-align: center;
+	background-color: transparent;
+	font-size: 18px;
+	padding: 0;
+}
+.dd_pagination .pagination > li:first-child > a, 
+.dd_pagination .pagination > li:first-child > span{
+    border-radius: 0;
+}
+.dd_pagination .pagination > li:last-child > a, 
+.dd_pagination .pagination > li:last-child > span {
+    border-radius: 0;
+}
+.dd_pagination{
+	
+}
+.pagination>.active>a, .pagination>.active>a:focus, .pagination>.active>a:hover, .pagination>.active>span, .pagination>.active>span:focus, .pagination>.active>span:hover{
+	color: #ffffff;
+    background-image: -moz-linear-gradient( 43deg, rgb(13,214,232) 0%, rgb(20,199,172) 100%);
+    background-image: -webkit-linear-gradient( 43deg, rgb(13,214,232) 0%, rgb(20,199,172) 100%);
+    background-image: -ms-linear-gradient( 43deg, rgb(13,214,232) 0%, rgb(20,199,172) 100%);
+	border-color: transparent;
+}
+.dd_pagination .pagination > li > a:focus, .dd_pagination .pagination > li > a:hover, .dd_pagination .pagination > li > span:focus, .dd_pagination .pagination>li>span:hover{
+    color: #ffffff;
+    background-image: -moz-linear-gradient( 43deg, rgb(13,214,232) 0%, rgb(20,199,172) 100%);
+    background-image: -webkit-linear-gradient( 43deg, rgb(13,214,232) 0%, rgb(20,199,172) 100%);
+    background-image: -ms-linear-gradient( 43deg, rgb(13,214,232) 0%, rgb(20,199,172) 100%);
+	border-color: transparent;
+}
+.pagination > li > a > .fa-angle-left,
+.pagination > li > a > .fa-angle-right{
+	content:"";
+	width:15px;
+	height:15px;
+	color:#a5a5a5;
+	-webkit-transform:rotate(-45deg);
+	-moz-transform:rotate(-45deg);
+	-ms-transform:rotate(-45deg);
+	transform:rotate(-45deg);
+	display: inline-block;
+}
+.pagination > li > a > .fa-angle-left{
+	border-top:2px solid;
+	border-left:2px solid;
+	margin-left: 5px;
+}
+.pagination > li > a > .fa-angle-right{
+	border-bottom:2px solid;
+	border-right:2px solid;
+	margin-left: -5px;
+}
+.pagination > li > a:hover > .fa-angle-left,
+.pagination > li > a:hover > .fa-angle-right{
+	color:#ffffff;
+}
+
+.btn_favourite{
+    padding: 0 5px !important;
+    width: 35px;
+}
+/***********************************************************************************
+5. doctor listing end
+***********************************************************************************/
+
+/***********************************************************************************
+6. doctor single start
+***********************************************************************************/
+.dd_single_detail{
+    background-image: url('../images/single_title_bg.jpg');
+    position: relative;
+    z-index: 1;
+    padding: 50px 0;
+}
+.dd_single_detail::before{
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 0;
+    opacity: 0.94;
+    background-image: -moz-linear-gradient( 43deg, rgb(13,214,232) 0%, rgb(20,199,172) 100%);
+    background-image: -webkit-linear-gradient( 43deg, rgb(13,214,232) 0%, rgb(20,199,172) 100%);
+    background-image: -ms-linear-gradient( 43deg, rgb(13,214,232) 0%, rgb(20,199,172) 100%);
+}
+.dd_single_detail .container{
+    z-index: 2;
+    position: relative;
+}
+.dd_single_detail .single_image{
+    width: 200px;
+    height: 200px;
+    float: left;
+    background-size: cover;
+    background-repeat: no-repeat;
+    border-radius: 3px;
+    box-shadow: 0px 0px 0px 3px #ffffff;
+}
+.dd_single_detail .single_image > img{
+    width: 200px;
+    height: 200px;
+}
+.dd_single_detail .single_detail{
+    width: calc(100% - 200px);
+    float: left;
+    padding: 20px 30px;
+    color: #ffffff;
+    padding-right: 0;
+}
+.dd_single_detail .single_detail > h3{
+    margin: 0;
+    font-size: 18px;
+    color: #ffffff;
+    margin-bottom: 5px;
+}
+.dd_single_detail .single_detail > span{
+    color: #ffffff;
+}
+.dd_single_detail .single_detail > ul{
+    list-style: none;
+    display: block;
+    padding: 0;
+    margin: 10px auto;
+    font-size: 16px;
+}
+.dd_single_detail .single_detail > ul > li{
+    display: block;
+    margin-bottom: 5px;
+}
+.dd_single_detail .single_detail > ul > li > span{
+    margin-right: 10px;
+}
+.dd_single_detail .single_detail > h4{
+    margin: 0;
+    font-size: 25px;
+    color: #ffffff;
+    margin-bottom: 15px;
+    float: left;
+}
+.dd_single_detail .single_detail > .btn_wrapper{
+    float: right;
+}
+.dd_single_detail .single_detail > .btn_wrapper a.active{
+    color: #ffffff;
+    border: none;
+    background-image: -moz-linear-gradient( 43deg, rgb(20,199,172) 0%, rgb(13,214,232) 100%);
+    background-image: -webkit-linear-gradient( 43deg, rgb(20,199,172) 0%, rgb(13,214,232) 100%);
+    background-image: -ms-linear-gradient( 43deg, rgb(20,199,172) 0%, rgb(13,214,232) 100%);
+	box-shadow: 0px 0px 0px 1px #ffffff;
+}
+.dd_single_detail .single_detail > .btn_wrapper a.active > .icon > svg path{
+    stroke: #ffffff;
+    stroke-width: 1px;
+}
+
+.dd_basic_wrapper{
+    margin: 50px auto;
+}
+.dd_basic_detail{
+    margin-bottom: 50px;
+}
+.dd_basic_detail > h3{
+    color: #18d5e6;
+    margin: 0;
+    margin-bottom: 15px;
+    font-weight: 400;
+    font-size: 20px;
+}
+.dd_basic_detail > p{
+    margin-bottom: 10px;
+    font-size: 16px;
+    display: flex;
+}
+.dd_basic_detail > p > label{
+    width: 200px;
+}
+.dd_basic_detail > p > span{
+    display: block;
+    font-size: 15px;
+    word-break: break-word;
+    width: calc(100% - 200px);
+}
+.dd_basic_wrapper .dd_btn{
+	margin-bottom:20px;
+}
+
+.dd_reviews{
+    margin-bottom: 30px;
+}
+.dd_reviews::after{
+    content: "";
+    display: table;
+    width: 100%;
+}
+.dd_reviews .total_review{
+    width: 120px;
+    float: left;
+    text-align: center;
+}
+.dd_reviews .total_review > label{
+    font-size: 20px;
+    color: #18d5e6;
+    font-weight: 400;
+}   
+.dd_reviews .total_review > h3{
+    margin: 0;
+    font-size: 30px;
+    color: #18d5e6;
+    text-align: center;
+}
+.dd_reviews .total_review > .star_list{
+    margin-bottom: 5px;
+}
+
+.dd_reviews .total_review > .star_list > a.active svg path{
+    fill: #ff9800;
+}
+.dd_reviews .total_review > span{
+    text-align: center;
+    display: block;
+    font-size: 16px;
+    color: #484848;
+}
+.dd_reviews .total_review > span > svg{
+    vertical-align: middle;
+    transform: translateY(-1px);
+    margin-right: 5px;
+}
+.dd_reviews .review_bar{
+    width: calc(100% - 120px);
+    float: left;
+    padding: 0 100px 0 15px; 
+}
+.dd_reviews .review_bar > ul{
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: block;
+}
+.dd_reviews .review_bar > ul > li{
+    display: block;
+    margin-bottom: 10px;
+}
+.dd_reviews .review_bar > ul > li:after{
+    content: "";
+    display: table;
+    width: 100%;
+}
+.dd_reviews .review_bar > ul > li > div{
+    float: left;
+}
+.dd_reviews .review_bar > ul > li > div.icon > svg{
+    vertical-align: middle;
+}
+.dd_reviews .review_bar > ul > li > div.icon > svg path{
+	fill: #FF9800;
+}
+.dd_reviews .review_bar > ul > li > div.star_count{
+    margin: 0 7px;
+    font-size: 25px;
+    color: #484848;
+    line-height: 24px;
+}
+.dd_reviews .review_bar > ul > li > div.progress_count{
+    width: calc(100% - 50px);
+    height: 25px;
+    background-color: #f9f9f9;
+    position: relative;
+    z-index: 1;
+    padding: 3px 10px;
+    font-weight: 600;
+}
+.dd_reviews .review_bar > ul > li > div.progress_count > span{
+    border-radius: 2px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    z-index: -1;
+}
+.dd_reviews .review_bar > ul > li:nth-child(1) > div.progress_count > span{
+    background-color: #89c351;
+}
+.dd_reviews .review_bar > ul > li:nth-child(2) > div.progress_count > span{
+    background-color: #ddf781;
+}
+.dd_reviews .review_bar > ul > li:nth-child(3) > div.progress_count > span{
+    background-color: #f39e57;
+}
+.dd_reviews .review_bar > ul > li:nth-child(4) > div.progress_count > span{
+    background-color: #f48325;
+}
+.dd_reviews .review_bar > ul > li:nth-child(5) > div.progress_count > span{
+    background-color: #f45c21;
+}
+/***********************************************************************************
+6. doctor single end
+***********************************************************************************/
+
+/***********************************************************************************
+7. profile start
+***********************************************************************************/
+.dd_profile_wrapper{
+    margin-bottom: 50px;
+}
+h3.dd_title_medium{
+    font-size: 22px;
+    color: #696969;
+    font-weight: 400;
+    margin: 0;
+    margin-bottom: 20px;
+}
+
+.dd_profile_image_wrapper{
+    margin-bottom: 30px;
+    text-align: center;
+    background-color: #f1f3f5;
+    padding: 50px 20px;
+}
+.dd_profile_image_wrapper > .dd_user_img{
+    position: relative;
+    z-index: 0;
+    display: inline-block;
+    margin-bottom: 15px;
+}
+.dd_profile_image_wrapper > .dd_user_img img{
+	position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    width: 100px;
+    height: 100px;
+    border-radius: 100px;
+}
+.dd_profile_image_wrapper > .dd_user_img input{
+	position:absolute;
+	opacity: 0;
+	width: 100px;
+    height: 100px;
+    border-radius: 100px;
+	position:absolute;
+	top:0;
+	left:0;
+	cursor:pointer;
+}
+.dd_profile_image_wrapper > .dd_user_img .dd_remove_image{
+	position: absolute;
+    top: 0px;
+    right: 10px;
+    width: 20px;
+    height: 20px;
+    border-radius: 12px;
+    background-color: #F44336;
+    border: 2px solid #fff;
+	opacity:0;
+	visibility:hidden;
+	cursor:pointer;
+}
+.dd_profile_image_wrapper > .dd_user_img:hover .dd_remove_image{
+	opacity:1;
+	visibility:visible;
+}
+.dd_profile_image_wrapper > .dd_user_img .dd_remove_image:after,
+.dd_profile_image_wrapper > .dd_user_img .dd_remove_image:before{
+	content: "";
+    width: 10px;
+    height: 2px;
+    border-radius: 2px;
+    background-color: #ffffff;
+    display: block;
+    margin: -2px;
+    -webkit-transform-origin: 7px;
+    -moz-transform-origin: 7px;
+    -ms-transform-origin: 7px;
+    transform-origin: 7px;
+}
+.dd_profile_image_wrapper > .dd_user_img .dd_remove_image:after{
+	-webkit-transform:rotate(45deg) translate(10.5px, 4.5px);
+	-moz-transform:rotate(45deg) translate(10.5px, 4.5px);
+	-ms-transform:rotate(45deg) translate(10.5px, 4.5px);
+	transform:rotate(45deg) translate(10.5px, 4.5px);
+}
+.dd_profile_image_wrapper > .dd_user_img .dd_remove_image:before{
+	-webkit-transform:rotate(-45deg) translate(-2.5px, 8.5px);
+	-moz-transform:rotate(-45deg) translate(-2.5px, 8.5px);
+	-ms-transform:rotate(-45deg) translate(-2.5px, 8.5px);
+	transform:rotate(-45deg) translate(-2.5px, 8.5px);
+}
+.dd_profile_image_wrapper > .dd_user_img .dd_user_initials{
+    width: 100px;
+    height: 100px;
+    text-align: center;
+    line-height: 100px;
+    border-radius: 100px;
+    color: #5a5757;
+    font-size: 50px;
+    font-weight: 300;
+    text-transform: uppercase;
+    z-index: -1;
+    border: 1px solid;
+	display:block;
+}
+.dd_profile_image_wrapper > .dd_user_name p{
+    font-size: 20px;
+    margin-bottom: 5px;
+}
+.dd_profile_image_wrapper > .dd_user_name span{
+    color: #14c9b5;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.dd_profile_wrapper .dd_tab_wrapper{
+	margin-top: -92px;
+}
+.dd_profile_wrapper .dd_tab_wrapper{
+	margin-top: -92px;
+}
+.dd_profile_wrapper .dd_tab_wrapper .nav-tabs{
+	border-bottom:none;
+}
+.dd_profile_wrapper .dd_tab_wrapper .nav-tabs>li>a{
+	color: #ffffff;
+}
+.dd_profile_wrapper .dd_tab_wrapper .nav-tabs>li.active>a, 
+.dd_profile_wrapper .dd_tab_wrapper .nav-tabs>li.active>a:focus, 
+.dd_profile_wrapper .dd_tab_wrapper .nav-tabs>li.active>a:hover{
+	border-color:transparent;
+	color: #555555;
+	background-color:#ffffff;
+}
+.dd_profile_wrapper .dd_tab_wrapper .nav>li>a:focus, .dd_profile_wrapper .dd_tab_wrapper .nav>li>a:hover{
+	background-color: rgba(255, 255, 255, 0.15);
+}
+.dd_profile_wrapper .dd_tab_wrapper .tab-content{
+	padding-top: 45px;
+}
+
+.dd_current_plan{
+	margin-bottom: 20px;
+    padding: 25px;
+    border: 1px solid #e0e0e0;
+    font-size: 16px;
+}
+.dd_current_plan > ul{
+	list-style:none;
+	padding:0;
+	margin:0;
+}
+.dd_current_plan > ul > li{
+	margin-bottom:15px;	
+}
+.dd_current_plan > ul > li:last-child{
+	margin-bottom:0;
+}
+.dd_current_plan > ul > li:after{
+	content:"";
+	display:table;
+	width:100%;
+}
+.dd_current_plan > ul > li > label{
+	width:200px;
+	float:left;
+}
+.dd_current_plan > ul > li > p{
+	width: calc(100% - 200px);
+	float:left;
+}
+.dd_current_plan > ul > li > p:before{
+	content:"-";
+	display:inline-block;
+	margin-right:20px;
+}
+/***********************************************************************************
+7. profile end
+***********************************************************************************/
+
+/***********************************************************************************
+8. search form start
+***********************************************************************************/
+.dd_search_form{
+    background-color: #ffffff;
+    border-radius: 50px;
+}
+.dd_search_form:after{
+    content: "";
+    display: table;
+    width: 100%;
+}
+.dd_search_form > input{
+    width: calc(33.3333333% - 41px);
+    float: left;
+    height: 50px;
+    border: none;
+    outline: none;
+    padding: 0px 20px;
+    font-size: 18px;
+    color: #7b7b7b;
+    border-radius: 50px 0 0 50px;
+}
+.dd_search_form > select{
+    width: calc(33.3333333% - 41px);
+    float: left;
+    height: 50px;
+    border: none;
+    outline: none;
+    padding: 0px 15px;
+    border-left: 1px solid #e9e9ea;
+    font-size: 18px;
+    color: #7b7b7b;
+}
+.dd_search_form > .dd_btn{
+    margin: 3px 3px 3px 0;
+}
+
+.dd_search_box_wrapper{
+    padding: 15px 15px 0;
+    margin-top: 20px;
+}
+.dd_search_box_wrapper > .dd_search_box_inner{
+    margin: 0 auto;
+    max-width: 550px;
+    width: 100%;
+    position: relative;
+}
+.dd_search_box_wrapper > .dd_search_box_inner > .form-control{
+    border: none;
+    box-shadow: none;
+    padding: 20px 30px;
+    height: auto;
+    border-radius: 50px;
+    font-size: 18px;
+    padding-right: 65px;
+}
+.dd_search_box_wrapper > .dd_search_box_inner > .icon{
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    display: block;
+    width: 65px;
+    line-height: 62px;
+    text-align: center;
+    border-radius: 0 50px 50px 0;
+}
+.dd_search_box_wrapper > .dd_search_box_inner > .icon > svg{
+    width: 20px;
+    height: auto;
+    vertical-align: middle;
+    opacity: 0.4;
+}
+.dd_search_box_wrapper > .dd_search_box_inner > .icon:hover > svg{
+    opacity: 0.6;
+}
+
+.dd_search_result{
+    position: absolute;
+    top: 100%;
+    left: 30px;
+    right: 30px;
+    background-color: #f9f9f9;
+    z-index: 2;
+    text-align: left;
+    padding: 15px;
+    max-height: 400px;
+    overflow: auto;
+    box-shadow: 0px 5px 20px -10px rgba(0, 0, 0, 0.4);
+    opacity: 0;
+    visibility: hidden;
+    -webkit-transition: 0.2s;
+    -moz-transition: 0.2s;
+    -ms-transition: 0.2s;
+    transition: 0.2s;
+    -webkit-transform: translateY(-10px);
+    -moz-transform: translateY(-10px);
+    -ms-transform: translateY(-10px);
+    transform: translateY(-10px);
+}
+.search_result_open .dd_search_result{
+    opacity: 1;
+    visibility: visible;
+    -webkit-transform: translateY(0px);
+    -moz-transform: translateY(0px);
+    -ms-transform: translateY(0px);
+    transform: translateY(0px);
+}
+.dd_search_result h5{
+    color: #404040;
+    padding: 10px;
+    margin: 0;
+    font-size: 16px;
+    font-weight: 600;
+}
+.dd_search_result ul{
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+.dd_search_result ul > li{
+    display: block;
+}
+.dd_search_result ul > li > a{
+    display: block;
+    padding: 7px 20px;
+    color: #6d6d6d;
+    font-size: 14px;
+    border-radius: 50px;
+}
+.dd_search_result ul > li > a:hover{
+    color: #505050;
+    background-color: rgba(165, 165, 165, 0.17);
+}
+/***********************************************************************************
+8. search form end
+***********************************************************************************/
+
+/***********************************************************************************
+9. appointment page start
+***********************************************************************************/
+.dd_book_appointment_wrapper{
+	padding-bottom:50px;
+}
+.dd_dr_profile {
+    margin-bottom:40px;
+}
+.dd_dr_profile:after{
+	content:"";
+	display:table;
+	width:100%;
+}
+.dd_dr_profile .dd_dr_profile_img {
+    width: 212px;
+    float: left;
+}
+.dd_dr_profile .dd_dr_profile_detail {
+    width: calc(100% - 212px);
+    float: left;
+	padding:50px 0;
+}
+.dd_dr_profile .dd_dr_profile_img > img {
+    border-radius: 100%;
+	max-width: 175px;
+	border: 1px solid #e0e0e0;
+}
+.dd_dr_profile .dd_dr_profile_detail > h1{
+    font-size: 30px;
+    font-weight: 400;
+    color: #484848;
+    margin: 0;
+	padding-bottom:14px;
+}
+.dd_dr_profile .dd_dr_profile_detail > h3 {
+    margin: 0px;
+    font-size: 25px;
+    color: #252323;
+	margin-bottom: 14px;
+}
+.dd_page_title.dd_appointment_title {
+    padding: 10px 0;
+}
+.dd_page_title.dd_appointment_title>h3 {
+    font-size: 30px;
+	text-transform:capitalize;
+}
+.dd_clinic_location{
+	margin-top: 40px;
+    font-size: 20px;
+}
+.dd_clinic_location > span{
+	margin-right:5px;
+}
+
+/** clinic slider**/
+.dd_clinic_slider{
+	padding:50px 0 0 0;
+	position:relative;
+}
+.dd_clinic_slider_section{
+	text-align:center;
+	padding:30px;
+	background-color:#eeeaea;
+	cursor:pointer;
+	-webkit-transition: all 0.3s;
+	-moz-transition: all 0.3s;
+	-ms-transition: all 0.3s;
+	transition: all 0.3s;
+}
+.center .dd_clinic_slider_section{
+	background-image: -moz-linear-gradient( 145deg, rgb(20,199,172) 0%, rgb(13,214,232) 100%);
+    background-image: -webkit-linear-gradient( 145deg, rgb(20,199,172) 0%, rgb(13,214,232) 100%);
+    background-image: -ms-linear-gradient( 145deg, rgb(20,199,172) 0%, rgb(13,214,232) 100%);
+}
+.dd_clinic_slider_section > img{
+	width:39px;
+	height:45px;
+}
+.dd_clinic_slider_section > h2{
+	font-size: 25px;
+    text-transform: capitalize;
+    color: #7e7e7e;
+    margin: 0px;
+    padding-top: 16px;
+	-webkit-transition: all 0.3s;
+	-moz-transition: all 0.3s;
+	-ms-transition: all 0.3s;
+	transition: all 0.3s;
+}
+.center .dd_clinic_slider_section > h2{
+	color:#ffffff;
+}
+.dd_clinic_slider .owl-prev,.dd_clinic_slider .owl-next {
+    position: absolute;
+    top: 50%;
+	transform: translateY(-50%);
+    -webkit-transform: translateY(-50%);
+    -moz-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    -o-transform: translateY(-50%);
+    left: -7%;
+}
+.dd_clinic_slider .owl-next {
+	right:-7%;
+	left:auto;
+}
+.dd_date_picker{
+	margin:30px 0;
+	position:relative;
+}
+.dd_date_picker > input {
+    height: 50px;
+    line-height: 50px;
+    background-color: #f9f9f9;
+    border: none;
+    width: 100%;
+	padding:0 15px;
+	outline:none;
+	color:#838383;
+	font-size:23px;
+}
+.dd_date_picker>span{
+	position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    -webkit-transform: translateY(-50%);
+    -moz-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    -o-transform: translateY(-50%);
+}
+/** doctor time css start**/
+.dd_dr_time_wrapper{
+	background-color:#f9f9f9;
+	padding:40px 0 0 0;
+}
+.dd_time_section{
+	margin-bottom:40px;
+}
+.dd_time_section .dd_time_icon {
+    width: 105px;
+    float: left;
+}
+.dd_time_section .dd_title {
+    width: calc(100% - 105px);
+    float: left;
+}
+.dd_time_section .dd_title h3 {
+    margin: 0px;
+    color: #1cc2b3;
+	font-weight:600;
+    line-height: 57px;
+    text-transform: uppercase;
+}
+.dd_time_section>.dd_time {
+    display: flex;
+    width: 100%;
+    padding-top: 10px;
+}
+.dd_time_section>.dd_time>ul{
+    margin: 0;
+    list-style: none;
+	padding:0px;
+	width:100%;
+    border-top: 2px solid #cfcfcf;
+    border-bottom: 2px solid #cfcfcf;
+}
+.dd_time_section>.dd_time>ul>li{
+	display: inline-block;
+    font-size: 20px;
+    color: #a2a2a2;
+    font-family: 'Lato', sans-serif;
+    text-transform: capitalize;
+    padding: 20px 25px;
+	cursor:pointer;
+}
+.dd_time_section>.dd_time>ul>li.active{
+	color:#ffffff;
+	background-image: -moz-linear-gradient( 43deg, rgb(20,199,172) 0%, rgb(13,214,232) 100%);
+    background-image: -webkit-linear-gradient( 43deg, rgb(20,199,172) 0%, rgb(13,214,232) 100%);
+    background-image: -ms-linear-gradient( 43deg, rgb(20,199,172) 0%, rgb(13,214,232) 100%);
+}
+/** doctor time css end**/
+/** appointment form css start**/
+.dd_appointment_form{
+	text-align:center;
+}
+.dd_appointment_form .dd_btn{
+	margin:30px 0 80px;
+	width:200px;
+	text-transform:uppercase;
+}
+/** appointment form css start**/
+
+.dd_appointment_list{
+	margin-bottom: 50px;
+}
+
+.dd_appointment_list > div > ul{
+	list-style:none;
+	padding:0;
+	margin:0;
+}
+.dd_appointment_list > div > ul > li{
+	display:block;
+}
+.dd_appointment_list > div > ul > li > .dd_appointment{
+	display:flex;
+}
+.dd_appointment_list > div > ul > li > .dd_appointment > div{
+	flex-grow: 1;
+    width: 20%;
+}
+.dd_appointment_list > div > ul > li > .dd_appointment > div:first-child{
+	width: 50px;
+    max-width: 50px;
+}
+.dd_appointment_list > div > ul > li > .dd_appointment > div:nth-child(2){
+	margin-right:30px;
+}
+.dd_appointment_list > div > ul > li > .dd_appointment > div:last-child{
+	width: 100px;
+    max-width: 100px;
+}
+.dd_appointment_list > div > ul > li > .dd_appointment > div .btn_table{
+	display:inline-block;
+	margin-right:10px;
+}
+.dd_appointment_list > div > ul > li > .dd_appointment .dd_switch{
+	margin-bottom:0;
+}
+.dd_appointment_list > div > ul > li > .dd_appointment .dd_switch > label,
+.dd_appointment_list > div > ul > li > .dd_appointment .dd_switch > label:before{
+	display:table;
+}
+
+
+.dd_appointment_list > div.dd_appointment_head{
+	padding: 20px;
+    background-color: #11d0d3;
+    color: #ffffff;
+    font-weight: 600;
+    font-size: 16px;
+}
+.dd_appointment_list > div.dd_appointment_body > h3{
+	margin-bottom: 10px;
+    font-weight: 400;
+    font-size: 16px;
+}
+.dd_appointment_list > div.dd_appointment_body > ul{
+	margin-bottom:30px;
+}
+.dd_appointment_list > div.dd_appointment_body > ul > li{
+	padding: 20px;
+    background-color: #fbfbfb;
+    margin-bottom: 10px;
+    border: 1px solid #e4e4e4;
+}
+.dd_clinic_slider .owl-prev svg, 
+.dd_clinic_slider .owl-next svg{
+	width:30px;
+	height:30px;
+}
+.owl-carousel .owl-dots.disabled, .owl-carousel .owl-nav.disabled{
+	display:block;
+}
+.dd_clinic_slider .owl-prev svg path, .dd_clinic_slider .owl-next svg path {
+    fill: #11d1d3;
+}
+
+/* fallback */
+@font-face {
+  font-family: 'Material Icons';
+  font-style: normal;
+  font-weight: 400;
+  src: url(https://fonts.gstatic.com/s/materialicons/v36/flUhRq6tzZclQEJ-Vdg-IuiaDsNc.woff2) format('woff2');
+}
+
+.material-icons {
+  font-family: 'Material Icons';
+  font-weight: normal;
+  font-style: normal;
+  font-size: 24px;
+  line-height: 1;
+  letter-spacing: normal;
+  text-transform: none;
+  display: inline-block;
+  white-space: nowrap;
+  word-wrap: normal;
+  direction: ltr;
+  -webkit-font-feature-settings: 'liga';
+  -webkit-font-smoothing: antialiased;
+}
+.dtp{
+	overflow:auto;
+}
+.dtp > .dtp-content{
+	margin-top:30px;
+	top: 0px !important;
+	margin-bottom: 30px;
+}
+.dtp .p10 > a{
+	color: #ffffff;
+}
+
+/***********************************************************************************
+9. appointment page end
+***********************************************************************************/
+
+/***********************************************************************************
+10. plans start
+***********************************************************************************/
+.dd_plans{
+	margin-bottom: 50px;
+    background-color: #f3f3f3;
+    padding: 50px 30px;
+    text-align: center;
+}
+.dd_plans label{
+	font-size: 19px;
+    font-weight: 400;
+    color: #16cab6;
+}
+.dd_plans h3{
+	font-size: 50px;
+    font-weight: 300;
+}
+.dd_plans p{
+	margin-bottom: 25px;
+}
+.dd_plans .dd_pritable_list ul{
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    margin-bottom: 30px;
+}
+.dd_plans .dd_pritable_list ul > li{
+    padding: 0 40px;
+    border-bottom: 1px solid #dedede;
+    display: table;
+    margin: 0 auto;
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+    font-style: italic;
+    letter-spacing: 0.5px;
+    color: #949494;
+}
+.dd_plans .dd_pritable_list ul > li:last-child{
+    border-bottom: none;
+    padding-bottom: 0;
+    margin-bottom: 0;
+}
+/***********************************************************************************
+10. plans end
+***********************************************************************************/
+
+/***********************************************************************************
+11. add clinic start
+***********************************************************************************/
+.dd_add_clinic{
+    margin-bottom: 30px;
+}
+/***********************************************************************************
+11. add clinic end
+***********************************************************************************/
+
+
+/***********************************************************************************
+49. footer start
+***********************************************************************************/
+.dd_footer_wrapper{
+    text-align:center;
+    background-color: #333638;
+    padding: 70px 15px;
+}
+.dd_footer_wrapper > h3{
+    margin: 0;
+    margin-bottom: 15px;
+    color: #14cab7;
+    font-size: 40px;
+    font-weight: 300;
+}
+.dd_footer_wrapper > p{
+    color: #cecece;
+    margin-bottom: 30px;
+    font-size: 18px;
+}
+.dd_footer_wrapper .dd_social > ul{
+    display: block;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+.dd_footer_wrapper .dd_social > ul > li{
+    display: inline-block;
+    margin: 0 5px;
+}
+.dd_footer_wrapper .dd_social > ul > li > a{
+    display: block;
+}
+.dd_footer_wrapper .dd_social > ul > li > a svg{
+    width: 30px;
+    height: auto;    
+}
+.dd_footer_wrapper .dd_social > ul > li > a svg polygon,
+.dd_footer_wrapper .dd_social > ul > li > a svg path{
+    fill: #a2a2a2;
+}
+.dd_footer_wrapper .dd_social > ul > li > a:hover svg polygon,
+.dd_footer_wrapper .dd_social > ul > li > a:hover svg path{
+    fill: #14cab7;
+}
+.dd_copyright{
+    padding: 15px;
+    color: #cfcfcf;
+    background-color: #27292c;
+    text-align: center;
+}
+/***********************************************************************************
+49. footer end
+***********************************************************************************/
+
+/***********************************************************************************
+50. typography start
+***********************************************************************************/
+/* button start */
+.dd_btn{
+    height: 45px;
+    line-height: 45px;
+    border-radius: 50px;
+    background-image: -moz-linear-gradient( 43deg, rgb(20,199,172) 0%, rgb(13,214,232) 100%);
+    background-image: -webkit-linear-gradient( 43deg, rgb(20,199,172) 0%, rgb(13,214,232) 100%);
+    background-image: -ms-linear-gradient( 43deg, rgb(20,199,172) 0%, rgb(13,214,232) 100%);
+    color: #ffffff;
+    font-size: 15px;
+    text-align: center;
+    display: inline-block;
+    padding: 0 30px;
+    outline: none;
+    border: none;
+	font-weight: 600;
+    text-transform: uppercase;
+}
+.dd_btn:hover, .dd_btn:focus{
+    color: #ffffff;
+    background-image: -moz-linear-gradient( 43deg, rgb(13,214,232) 0%, rgb(20,199,172) 100%);
+    background-image: -webkit-linear-gradient( 43deg, rgb(13,214,232) 0%, rgb(20,199,172) 100%);
+    background-image: -ms-linear-gradient( 43deg, rgb(13,214,232) 0%, rgb(20,199,172) 100%);
+}
+.dd_btn_block{
+    display: block;
+}
+.dd_btn.dd_btn_white{
+    border-style: solid;
+    border-width: 1px;
+    border-color: #0ed5e3;
+    background-image: none;
+    background-color: #ffffff;
+    color: #0ed5e3;
+}
+.dd_btn.dd_btn_small{
+    height: 35px;
+    line-height: 34px;
+    font-size: 16px;
+}
+.dd_btn_icon > .icon{
+    display: inline-block;
+}
+.dd_btn_icon > .icon > svg{
+    vertical-align: middle;
+}
+/* button end */
+
+/* inputbox start */
+.dd_input_wrapper{
+    margin-bottom: 30px;
+    position: relative;
+}
+.dd_input_wrapper > label{
+    font-weight: 400;
+}
+.dd_input_wrapper > .form-control{
+    border: none;
+    border: 1px solid #b6b6b6;
+    box-shadow: none;
+    padding: 10px 20px;
+    height: auto;
+}
+.dd_input_wrapper.dd_input_icon > .form-control{
+    padding-right: 40px;
+}
+.dd_input_wrapper > textarea.form-control{
+    resize: vertical;
+}
+.dd_input_wrapper > .form-control:focus{
+    border-color: #1bd8e9;
+    box-shadow: 0px 0px 0px 1px #1bd8e9;
+}
+.dd_input_wrapper > .icon{
+    position: absolute;
+    right: 12px;    
+    top: 12px;
+}
+.dd_input_wrapper > .icon > svg{
+    width: 18px;
+    height: auto;
+}
+.dd_input_wrapper > .icon > svg path{
+    fill: #909090;
+}
+.dd_input_wrapper > .form-control::-webkit-input-placeholder{
+    color: #b6b6b6;
+    -webkit-transition: all 0.3s;
+    -moz-transition: all 0.3s;
+    -ms-transition: all 0.3s;
+    transition: all 0.3s;
+}
+.dd_input_wrapper > .form-control:focus::-webkit-input-placeholder{
+    -webkit-transform: translateX(5px);
+    -moz-transform: translateX(5px);
+    -ms-transform: translateX(5px);
+    transform: translateX(5px);
+}
+
+.margin-bottom-10{
+    margin-bottom: 10px;
+}
+/* inputbox end */
+
+/* radio start */
+.dd_radio_list > .dd_radio{
+    display: inline-block;
+    margin-right: 15px;
+}
+.dd_radio{
+    display: block;
+}
+.dd_radio > input{
+    position: absolute;
+    left: -9999px;
+}
+.dd_radio > label{
+    font-weight: 400;
+    color: #9e9e9e;
+    cursor: pointer;
+    position: relative;
+}
+.dd_radio > label::before{
+    content: "";
+    width: 16px;
+    height: 16px;
+    border-radius: 18px;
+    display: inline-block;
+    vertical-align: middle;
+    background-color: #1bd8e9;
+    margin-right: 8px;
+}
+.dd_radio > label::after{
+    content: "";
+    position: absolute;
+    top: 7px;
+    left: 4px;
+    width: 8px;
+    height: 8px;
+    border-radius: 12px;
+    background-color: #ffffff;
+    -webkit-transition: all 0.2s;
+    -moz-transition: all 0.2s;
+    -ms-transition: all 0.2s;
+    transition: all 0.2s;
+    -webkit-transform: scale(0);
+    -moz-transform: scale(0);
+    -ms-transform: scale(0);
+    transform: scale(0);
+}
+.dd_radio > input:checked ~ label::after{
+    -webkit-transform: scale(1);
+    -moz-transform: scale(1);
+    -ms-transform: scale(1);
+    transform: scale(1);
+}
+/* radio end */
+
+/* checkbox start */
+.dd_checkbox_list > .dd_checkbox{
+    display: inline-block;
+    margin-right: 15px;
+}
+.dd_checkbox{
+    display: block;
+}
+.dd_checkbox > input{
+    position: absolute;
+    left: -9999px;
+}
+.dd_checkbox > label{
+    font-weight: 400;
+    color: #9e9e9e;
+    cursor: pointer;
+    position: relative;
+}
+.dd_checkbox > label::before{
+    content: "";
+    width: 16px;
+    height: 16px;
+    border-radius: 2px;
+    display: inline-block;
+    vertical-align: middle;
+    border: 1px solid #b6b6b6;
+    margin-right: 8px;
+}
+.dd_checkbox > label::after{
+    content: "";
+    position: absolute;
+    top: 7px;
+    left: 4px;
+    width: 8px;
+    height: 8px;
+    background-color: #1bd8e9;
+    -webkit-transition: all 0.2s;
+    -moz-transition: all 0.2s;
+    -ms-transition: all 0.2s;
+    transition: all 0.2s;
+    -webkit-transform: scale(0);
+    -moz-transform: scale(0);
+    -ms-transform: scale(0);
+    transform: scale(0);
+}
+.dd_checkbox > input:checked ~ label::after{
+    -webkit-transform: scale(1);
+    -moz-transform: scale(1);
+    -ms-transform: scale(1);
+    transform: scale(1);
+}
+/* checkbox end */
+
+/* switch start */
+.dd_switch {
+    margin-bottom: 10px;
+}
+.dd_switch > input {
+    position: absolute;
+    left: -9999px;
+}
+.dd_switch > label {
+    position: relative;
+    color: #666666;
+    font-weight: 600;
+    font-size: 13px;
+    cursor: pointer;
+    margin-bottom: 0;
+}
+.dd_switch > label::before {
+    content: "";
+    width: 40px;
+    height: 20px;
+    border: 1px solid #b9b9b9;
+    border-radius: 20px;
+    display: inline-block;
+}
+.dd_switch > label:after {
+    content: "";
+    position: absolute;
+    top: 3px;
+    right: auto;
+    bottom: auto;
+    left: 3px;
+    width: 14px;
+    height: 14px;
+    background-color: #c3c3c3;
+    border-radius: 30px;
+    display: block;
+    -webkit-transition: all 0.2s;
+    -moz-transition: all 0.2s;
+    -ms-transition: all 0.2s;
+    transition: all 0.2s;
+} 
+.dd_switch > input:checked ~ label::after {
+    left: auto;
+    right: 3px;
+    background-color: #12d0d3;
+}
+/* switch end */
+
+/* popup start */
+.dd_popup_wrapper{
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+	z-index: 9999;
+    background-color: rgba(0,0,0,0.65);
+    text-align: center;
+    opacity: 0;
+    visibility: hidden;
+	overflow:auto;
+	padding: 0 15px;
+}
+.dd_popup_wrapper.popup_open{
+    opacity: 1;
+    visibility: visible;
+}
+.dd_popup_wrapper > .dd_popup_inner{
+    position: relative;
+    display: inline-block;
+    vertical-align: middle;
+    background-color: #ffffff;
+    width: 100%;
+    max-width: 560px;
+    border-radius: 10px;
+    overflow: hidden;
+	margin: 30px auto;
+}
+.dd_popup_close{
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    cursor: -webkit-zoom-out;
+}
+.dd_popup_wrapper.popup_open > .dd_popup_inner{
+    opacity: 1;
+    visibility: visible;
+    animation: dd_authentication_anim 0.3s;
+    animation-fill-mode: forwards;
+}
+.dd_popup_wrapper > .dd_popup_inner > .dd_popup_header{
+    position: relative;
+    background-image: -moz-linear-gradient( -129deg, rgb(20,199,172) 0%, rgb(13,214,232) 100%);
+    background-image: -webkit-linear-gradient( -129deg, rgb(20,199,172) 0%, rgb(13,214,232) 100%);
+    background-image: -ms-linear-gradient( -129deg, rgb(20,199,172) 0%, rgb(13,214,232) 100%);
+    min-height: 175px;
+    padding: 30px;
+    margin-bottom: 80px;
+}
+.dd_popup_wrapper > .dd_popup_inner > .dd_popup_header > h3{
+    font-size: 35px;
+    color: #ffffff;
+    font-weight: 400;
+    margin: 0;
+}
+.dd_popup_wrapper > .dd_popup_inner > .dd_popup_header > .icon{
+    position: absolute;
+    top: calc(100% - 65px);
+    left: calc(50% - 65px);
+    z-index: 1;
+    width: 130px;
+    height: 130px;
+    line-height: 185px;
+    border-radius: 50%;
+    background-color: #ffffff;
+    box-shadow: 0px 3px 16px 0px rgba(0, 0, 0, 0.12);
+}
+.dd_popup_wrapper > .dd_popup_inner > .dd_popup_header > .icon > svg{
+    display: inline-block;
+}
+
+.dd_popup_wrapper > .dd_popup_inner > .dd_popup_body{
+    padding: 20px 40px;
+    text-align: left;
+}
+/* popup end */
+
+/* page title start */
+.dd_page_title{
+    background-image: -moz-linear-gradient( 145deg, rgb(20,199,172) 0%, rgb(13,214,232) 100%);
+    background-image: -webkit-linear-gradient( 145deg, rgb(20,199,172) 0%, rgb(13,214,232) 100%);
+    background-image: -ms-linear-gradient( 145deg, rgb(20,199,172) 0%, rgb(13,214,232) 100%);
+    padding: 70px 0;
+	margin-bottom: 50px;
+}
+.dd_page_title > h3{
+    text-align: center;
+    font-size: 35px;
+    font-weight: 300;
+    color: #ffffff;
+    margin: 0;
+}
+/* page title end */
+
+/* dropdown start */
+.dd_dropdown_wrapper{
+    position: relative;
+}
+.dd_dropdown_wrapper.dropdown_right .dd_dropdown{
+    right: 0;
+    left: auto;
+}
+.dd_dropdown_wrapper .dd_dropdown{
+    position: absolute;
+    top: 100%;
+    left:0;
+    padding-top:10px;  
+    opacity: 0;
+    visibility: hidden;
+    -webkit-transform: translateY(-10px) scale(0.95);
+    -moz-transform: translateY(-10px) scale(0.95);
+    transform: translateY(-10px) scale(0.95);
+    -webkit-transition: all 0.3s;
+    -moz-transition: all 0.3s;
+    transition: all 0.3s;
+}
+.dd_dropdown_wrapper:hover .dd_dropdown{
+    opacity: 1;
+    visibility: visible;
+    -webkit-transform: translateY(0px) scale(1);
+    -moz-transform: translateY(0px) scale(1);
+    transform: translateY(0px) scale(1);
+}
+.dd_dropdown_wrapper .dd_dropdown > .dd_dropdown_inner{
+    background-color: #ffffff;
+    padding: 10px;
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);
+    min-width: 180px;
+    border-radius: 5px;
+}
+.dd_dropdown_wrapper .dd_dropdown > .dd_dropdown_inner::before{
+    content: "";
+    position: absolute;
+    top: 0px;
+    left: 10px;
+    display: block;
+    border-bottom: 10px solid #ffffff;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+}
+.dd_dropdown_wrapper .dd_dropdown > .dd_dropdown_inner::after{
+    content: "";
+    position: absolute;
+    top: 2px;
+    left: 15px;
+    display: block;
+    width: 10px;
+    height: 10px;
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);
+    background-color: #ffffff;
+    z-index: -1;
+    -webkit-transform: rotate(45deg);
+    -moz-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
+.dd_dropdown_wrapper.dropdown_right .dd_dropdown > .dd_dropdown_inner::before{
+    left: auto;
+    right: 10px;
+}
+.dd_dropdown_wrapper.dropdown_right .dd_dropdown > .dd_dropdown_inner::after{
+    left: auto;
+    right: 15px;
+}
+.dd_dropdown_wrapper .dd_dropdown > .dd_dropdown_inner > ul{
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: block;
+}
+.dd_dropdown_wrapper .dd_dropdown > .dd_dropdown_inner > ul > li{
+    display: block;
+}
+.dd_dropdown_wrapper .dd_dropdown > .dd_dropdown_inner > ul > li > a{
+    display: block;
+    padding: 10px;
+    color: #757272; 
+    font-size: 14px;
+    text-align: left;
+}
+.dd_dropdown_wrapper .dd_dropdown > .dd_dropdown_inner > ul > li > a:hover{
+    color: #12cdc2;
+}
+/* dropdown end */
+
+/* back to top start */
+#dd_backToTop{
+	position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 30px;
+    height: 30px;
+    background-color: #0ed4e0;
+    border-radius: 50%;
+    text-align: center;
+    color: #fff;
+    font-size: 40px;
+    line-height: 40px;
+    overflow: hidden;
+	opacity:0;
+	visibility:hidden;
+	backface-visibility:hidden;
+	transform:translateY(20px);
+	transition:all 0.3s;
+}
+#dd_backToTop:hover{
+	background-color:#13c8b3;
+}
+#dd_backToTop.btt_show{
+	opacity:1;
+	visibility:visible;
+	transform:translateY(0px);
+}
+
+/* back to top end */
+
+/* no data found start  */
+.dd_no_doctor{
+	text-align:center;
+	margin:50px auto;
+}
+.dd_no_doctor > .icon > svg{
+	width:50px;
+	height:50px;
+}
+.dd_no_doctor > p{
+	font-size: 22px;
+    color: #a9a9a9;
+    font-weight: 300;
+}
+/* no data found end  */
+
+/* toaster start */
+.toaster{
+    width: auto !important;
+    max-width: 50%;
+}
+#toast-container>div, .toast{
+    border-radius: 100px;
+    border: none;
+    box-shadow: none;
+    opacity: 1;
+    -webkit-animation: alert_anim 0.3s cubic-bezier(0.075, 0.82, 0.165, 1);
+    -moz-animation: alert_anim 0.3s cubic-bezier(0.075, 0.82, 0.165, 1);
+    -ms-animation: alert_anim 0.3s cubic-bezier(0.075, 0.82, 0.165, 1);
+    animation: alert_anim 0.3s cubic-bezier(0.075, 0.82, 0.165, 1);
+    margin-bottom: 0;
+    position: relative;
+    margin-bottom: 10px;
+}
+#toast-container>div:hover, .toast:hover{
+    box-shadow: none;
+} 
+@-webkit-keyframes alert_anim{
+    0%{-webkit-transform: translateY(-50px);}
+    100%{-webkit-transform: translateY(0px);}
+}
+@-moz-keyframes alert_anim{
+    0%{-moz-transform: translateY(-50px);}
+    100%{-moz-transform: translateY(0px);}
+}
+@keyframes alert_anim{
+    0%{transform: translateY(-50px);}
+    100%{transform: translateY(0px);}
+}
+.toast.toast-error {
+    color: #ffffff;
+    background-color: #F44336;
+}
+.toast.toast-success {
+    color: #ffffff;
+    background-color: #4CAF50;
+}
+.toast .toast-close-button{
+    outline: none;
+    opacity: 0.8;
+    font-weight: 100;
+    line-height: 0px;
+    position: absolute;
+    top: 45%;
+    right: 15px;
+    -webkit-transform: translateY(-50%);
+    -moz-transform: translateY(-50%);
+    transform: translateY(-50%);
+}
+/* toaster end */
+
+/* icons start */
+.dd_icon{
+	width:20px;
+	height:20px;
+	display:inline-block;
+	vertical-align:middle;
+	background-image:url('../images/icon/icon_set.svg');
+}
+.dd_icon.edit{
+	background-position: 0px 0px;
+}
+.dd_icon.edit:hover{
+	background-position: -20px 0px;
+}
+
+.dd_icon.view{
+	background-position: -40px -0px;
+}
+.dd_icon.view:hover{
+	background-position: -60px -0px;
+}
+/* icons end */
+
+/* tab start */
+.dd_tab_wrapper{
+	margin-bottom:30px;
+}
+/* tab end */
+
+/* map start */
+.dd_map_wrapper #pac-input{
+    top: 10px !important;
+    width: 200px;
+    height: 29px;
+    padding: 0 10px;
+    border: 1px solid #ccc;
+    outline: none;
+}
+.dd_map_wrapper #pac-input:focus{
+    border-color: #1bd8e9;
+}
+.map_wrapper{
+    margin-bottom: 30px;
+}
+/* map end */
+
+/* ad start */
+.dd_ad_wrapper{
+    margin-bottom: 20px;
+    text-align: center;
+}
+.dd_ad_wrapper img{
+    max-width: 100%;
+}
+/* ad end */
+/***********************************************************************************
+50. typography end
+***********************************************************************************/
+
+
+/***********************************************************************************
+51. responsive start
+***********************************************************************************/
+/* Large desktop */
+@media (max-width: 1200px) { 
+.dd_time_section>.dd_time>ul>li{
+	padding:20px 12px;
+}
+.dd_header .dd_logo img{
+	max-width:180px;
+}
+.dd_header .dd_logo{
+	margin-right: 30px;
+}
+.dd_header .dd_nav > ul > li > a{
+	font-size: 14px;
+}
+.dd_main_wrapper{
+	padding-top: 80px;
+}
+.dd_auth_box > .dd_auth_image{
+    width: 65%;
+}
+.dd_auth_box > .dd_auth_form{
+    width: 35%;
+    padding: 50px 30px 10px;
+}
+
+}
+@media (max-width: 992px) {
+.dd_profile_wrapper .dd_tab_wrapper{
+	margin-top:0;
+}
+.dd_page_title br{
+	display:none;
+}
+
+.dd_profile_wrapper .dd_tab_wrapper .nav-tabs{
+	border-bottom:1px solid #ddd;
+}	
+.dd_profile_wrapper .dd_tab_wrapper .nav-tabs>li.active>a, .dd_profile_wrapper .dd_tab_wrapper .nav-tabs>li.active>a:focus, .dd_profile_wrapper .dd_tab_wrapper .nav-tabs>li.active>a:hover{
+	border-color:#dddddd;
+	border-bottom-color: transparent;
+}
+.dd_profile_wrapper .dd_tab_wrapper .nav-tabs>li>a{
+	color:inherit;
+}
+
+} 
+@media (min-width: 979px) and (max-width: 992px){ 
+.dd_header .dd_logo{
+	display:none;
+}
+
+}
+
+/* Portrait tablet to landscape and desktop */
+@media (min-width: 769px) and (max-width: 979px){ 
+.dd_auth_box > .dd_auth_image{
+    display: none;
+}
+.dd_auth_box > .dd_auth_form{
+    width: 100%;
+    padding: 40px 25%;
+}
+.dd_header .dd_logo {
+    margin-top: 29px;
+    margin-right: 10px;
+    max-width: 140px;
+}
+.dd_header .dd_nav > ul > li > a{
+    padding: 30px 5px;
+}
+.dd_clinic_slider .owl-prev svg path,.dd_clinic_slider .owl-next svg path{
+	fill:#11d1d3;
+}
+.dd_clinic_slider .owl-prev{
+	left:2%;
+}
+.dd_clinic_slider .owl-next{
+	right:2%;
+}
+}
+ 
+/* Landscape phone to portrait tablet */
+@media (max-width: 768px) {
+.dd_clinic_slider .owl-prev svg path,.dd_clinic_slider .owl-next svg path{
+	fill:#11d1d3;
+}
+.dd_clinic_slider .owl-prev{
+	left:2%;
+}
+.dd_clinic_slider .owl-next{
+	right:2%;
+}
+.dd_header .dd_logo{
+    margin-top: 25px;
+    margin-right: 0;
+    max-width: 160px;
+}
+.dd_main_wrapper {
+    height: inherit;
+    padding-top: 70px;
+}
+.dd_auth_box{
+    margin: 10px auto;
+}
+.dd_auth_box_wrapper{
+    margin: 30px auto;
+}
+.dd_authentication .dd_main_wrapper:before{
+    display: none;
+}
+.dd_authentication .dd_main_wrapper > .dd_auth_box_wrapper{
+    display: block;
+}
+.dd_auth_box > .dd_auth_image{
+    display: none;
+}
+.dd_auth_box > .dd_auth_form{
+    width: 100%;
+    padding: 40px 30px;
+}
+.dd_auth_tab_wrapper > .dd_auth_tab_link > ul > li > a{
+    font-size: 20px;
+}
+.dd_auth_tab_wrapper > .dd_auth_tab_link > ul > li:after{
+    font-size: 20px;
+}
+
+.dd_nav_toggle{
+    display: inline-block;
+}
+.dd_nav{
+    position: fixed;
+    top: 70px;
+    left: -300px;
+    bottom: 0;
+    overflow: auto;
+    background-color: #ffffff;
+    box-shadow: 0px 3px 7px 0px rgba(0, 0, 0, 0.08);
+    z-index: 998;
+    width: 300px;
+    -webkit-transition: all 0.3s linear;
+    -moz-transition: all 0.3s linear;
+    transition: all 0.3s linear;
+}
+.dd_sidebar_open .dd_nav{
+    left: 0;
+}
+.dd_header .dd_nav > ul{
+    margin: 30px auto;
+}
+.dd_header .dd_nav > ul > li{
+    display: block;
+}
+.dd_header .dd_nav > ul > li > a{
+    padding: 15px 25px;
+}
+.dd_header .dd_nav > ul > li > a.active,
+.dd_header .dd_nav > ul > li > a:hover{
+    background-color: #f1f1f1;
+}
+.dd_header .dd_nav > ul > li > a:after{
+    top: 50%;
+    bottom: 50%;
+    left: 0;
+    right: auto;
+    height: 0;
+    width: 3px;
+}
+.dd_header .dd_nav > ul > li > a:hover:after, 
+.dd_header .dd_nav > ul > li > a.active:after{
+    top: 0;
+    height: 100%;
+}
+
+.dd_sidebar_close{
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0,0,0,0.65);
+    z-index: 111;
+    cursor: -webkit-zoom-out;
+    display: none;
+}
+.dd_cat_sidebar_open .dd_sidebar_close,
+.dd_sidebar_open .dd_sidebar_close{
+    display: block;    
+}
+
+.dd_category_toggle{
+    display: block;
+}
+.dd_category_wrapper{
+    position: fixed;
+    top: 70px;
+    left: -300px;
+    bottom: 0;
+    padding: 15px;
+    overflow: auto;
+    background-color: #ffffff;
+    box-shadow: 0px 3px 7px 0px rgba(0, 0, 0, 0.08);
+    z-index: 998;
+    width: 300px;
+    -webkit-transition: all 0.3s linear;
+    -moz-transition: all 0.3s linear;
+    transition: all 0.3s linear;
+}
+.dd_cat_sidebar_open .dd_category_wrapper{
+    left: 0;
+}
+
+
+.dd_doctor_box{
+    padding: 15px;
+}
+.dd_doctor_box > .doc_image{
+    width: 100px;
+    height: 100px;
+    border-radius: 100px;
+}
+.dd_doctor_box > .doc_image > img{
+    opacity: 0;
+}
+.dd_doctor_box > .doc_detail{
+    width: calc(100% - 100px);
+}
+.dd_doctor_box > .doc_detail > .btn_wrapper a{
+    margin-bottom: 15px;
+	backface-visibility:hidden;
+}
+
+.dd_search_form{
+    padding: 15px;
+    border-radius: 0;
+}
+.dd_search_form > select,
+.dd_search_form > input{
+    width: 100%;
+    margin-bottom: 15px;
+    background-color: #f1f1f1;
+    border-radius: 0;
+    padding: 0 15px;
+
+}
+.dd_doctor_list_wrapper > .container > .row{
+    display: flex;
+    flex-direction: column-reverse;
+}
+#dd_backToTop{
+    left: 20px;
+    right: auto;
+}
+
+.dd_appointment_list > div.dd_appointment_head{
+	display:none;
+}
+.dd_appointment_list > div.dd_appointment_body > ul > li > .dd_appointment{
+	flex-direction: column;
+}
+.dd_appointment_list > div.dd_appointment_body > ul > li > .dd_appointment > div{
+	display: flex;
+    padding: 0px;
+    width: 100%;
+    border-bottom: 1px solid #e8e8e8;
+	max-width: 100%;
+}
+.dd_appointment_list > div.dd_appointment_body > ul > li > .dd_appointment > div::before {
+    content: attr(data-th) "";
+    font-weight: 500;
+    padding: 10px;
+    background-color: #fbfbfb;
+    flex: 50%;
+}
+.dd_appointment_list > div.dd_appointment_body > ul > li > .dd_appointment > div > .td_content {
+    float: left;
+    padding: 10px;
+    flex: 50%;
+}
+.dd_appointment_list > div.dd_appointment_body > ul > li > .dd_appointment > div > .td_content:before{
+	content:" : ";
+	display:inline-block;
+	margin-right: 10px;
+}
+.dd_appointment_list > div > ul > li > .dd_appointment .dd_switch{
+	display: inline-block;
+    vertical-align: middle;
+}
+
+}
+ 
+/* Landscape phones and down */
+@media (max-width: 480px) {
+.dd_page_title{
+    padding: 30px 0;
+	margin-bottom: 30px;
+}
+.dd_page_title > h3{
+    font-size: 30px;
+}    
+.dd_auth_box > .dd_auth_form{
+    padding: 40px 30px;
+}
+.dd_doctor_box{
+    text-align:center; 
+}
+.dd_doctor_box > .doc_image{
+    float: none;
+    display: inline-block;
+	margin-bottom: 10px;
+}
+.dd_doctor_box > .doc_detail{
+    width: 100%;
+}
+
+.dd_reviews .review_bar{
+    padding: 0 0px 0 15px;
+}
+.dd_single_detail{
+    padding: 20px 0;
+    padding-top: 40px;
+	text-align: center;
+}
+.dd_single_detail .single_image{
+    height: auto;
+    width: auto;
+	margin: 0 auto;
+    float: none;
+    display: table;
+}
+.dd_single_detail .single_image > img{
+    height: auto;
+    width: auto;
+    max-width: 100%;
+}
+.dd_single_detail .single_detail {
+    width: calc(100% - 0px);
+    padding: 20px 0px;
+}
+.dd_single_detail .single_detail > h4,
+.dd_single_detail .single_detail > .btn_wrapper{
+    float: none;
+}
+.dd_dr_profile{
+	text-align:center;
+	margin-bottom: 10px;
+}
+.dd_dr_profile .dd_dr_profile_img, .dd_dr_profile .dd_dr_profile_detail{
+	width:auto;
+	float:none;
+	display:block;
+	padding: 10px 0;
+}
+.dd_dr_profile .dd_dr_profile_detail > h1{
+	font-size: 20px;
+}
+.dd_dr_profile .dd_dr_profile_detail > h3{
+	font-size: 18px;
+}
+.dd_page_title.dd_appointment_title{
+	margin-bottom: 20px;
+}
+.dd_clinic_slider{
+	padding:0;
+}
+.dd_book_appointment_wrapper{
+	padding-bottom: 20px;
+}
+.dd_time_section .dd_title h3{
+	font-size: 16px;
+	line-height: 30px;
+}
+
+.dd_time_section .dd_time_icon{
+	width:50px;
+}
+.dd_time_section .dd_time_icon > svg{
+	width:30px;
+	height:auto;
+}
+.dd_time_section .dd_title {
+    width: calc(100% - 80px);
+}
+.dd_time_section>.dd_time>ul>li{
+	padding: 10px 15px;
+    font-size: 14px;
+}
+.dd_appointment_form .dd_btn{
+	margin: 0px 0 40px;
+}
+
+.dd_header_right > .dd_profile_dd > label > a{
+	width:25px;
+	height:25px;
+	overflow:hidden;
+	color:transparent;
+	background-image:url('../images/icon/user_mobile.svg');
+	background-position: center;
+    display: inline-block;
+    background-repeat: no-repeat;
+    vertical-align: middle;
+    background-size: 18px;
+    border: 1px solid #11ccc2;
+    border-radius: 50px;
+}
+.dd_header_right > .dd_profile_dd > label > span{
+	display:none;
+}
+.dd_search_box_wrapper > .dd_search_box_inner > .form-control{
+	padding: 12px 20px;
+	font-size: 15px;
+	padding-right: 50px;
+}
+.dd_search_box_wrapper > .dd_search_box_inner > .icon{
+	width: 55px;
+    line-height: 44px;
+}
+.dd_search_box_wrapper > .dd_search_box_inner > .icon > svg{
+	width: 15px;
+}
+.dd_footer_wrapper{
+	padding: 30px 15px;
+}
+.dd_footer_wrapper > h3{
+	font-size: 22px;
+}
+.dd_footer_wrapper > p{
+	font-size: 14px;
+}
+.dd_basic_detail > p > label{
+	width: 50%;
+}
+.dd_popup_wrapper > .dd_popup_inner > .dd_popup_header{
+	min-height: 125px;
+	margin-bottom: 45px;
+}
+.dd_popup_wrapper > .dd_popup_inner > .dd_popup_header > h3{
+	font-size: 25px;
+}
+.dd_popup_wrapper > .dd_popup_inner > .dd_popup_header > .icon{
+	top: calc(100% - 45px);
+    left: calc(50% - 45px);
+	width: 90px;
+    height: 90px;
+    line-height: 146px;
+}
+.dd_popup_wrapper > .dd_popup_inner > .dd_popup_body{
+	padding:20px;
+}
+
+}
+/***********************************************************************************
+51. responsive end
+***********************************************************************************/
+
+
