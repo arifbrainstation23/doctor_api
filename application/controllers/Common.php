@@ -212,8 +212,24 @@ class Common extends CI_Controller {
 			$this->load->view('user/common/footer' ,$data);
 	  }	
 	}
-	
-   /************** Appointments end**************/
+    public function appointment_details( $appointmentID ){
+        $user_id = (isset($_POST['user_id'])) ? $_POST['user_id'] : $this->user_id;
+        $user_level=(isset($_POST['user_level'])) ? $_POST['user_level'] : $this->user_level;
+
+        if($user_id==''){redirect(base_url().'authentication');}
+
+        $cond = "user_status = 1 AND dd_users.user_id = ".$user_id;
+
+        $data['userDetail'] = $this->DatabaseModel->select_data('dd_users.*' , 'dd_users' , $cond ,1)[0];
+        $data['userMeta']   = $this->DatabaseModel->select_data('*','dd_user_meta',array('user_id' => $user_id));
+        $data['user_level'] = $user_level;
+
+        $this->load->view('user/common/header' ,$data);
+        $this->load->view('user/appointment_details' ,$data);
+        $this->load->view('user/common/footer' ,$data);
+    }
+
+        /************** Appointments end**************/
    
    /************** Clinic start**************/
    function update_clinics(){

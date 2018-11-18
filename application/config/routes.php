@@ -56,6 +56,7 @@ $route['doctor-details/(:any)']='home/doctor_single/$1';
 $route['book-appointment/(:any)']='user/book_appointment/$1';
 $route['profile']='user/profile';
 $route['appointments']='common/appointments';
+$route['appointments/details/(:any)']='common/appointment_details/$1';
 $route['favourite']='user/favourite';
 $route['plans']='home/plans';
 

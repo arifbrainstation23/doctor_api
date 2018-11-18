@@ -153,7 +153,7 @@ class DatabaseModel extends CI_Model {
 
 
 		if($limit != ""){
-			if(count($limit)>1){
+			if(count( (array) $limit)>1){
 				$this->db->limit($limit['0'] , $limit['1']);
 			}else{
 				$this->db->limit($limit);

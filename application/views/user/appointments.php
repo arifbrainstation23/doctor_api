@@ -31,6 +31,7 @@
 								<div clas="dd_appion_col"><?php echo $this->ts_functions->getlanguage('appointment_time', 'profile', 'solo' ); ?></div>
 								<div clas="dd_appion_col"><?php echo $this->ts_functions->getlanguage('action', 'profile', 'solo' ); ?></div>
 								<div clas="dd_appion_col"><?php echo $this->ts_functions->getlanguage('note', 'profile', 'solo' ); ?></div>
+                                <div clas="dd_appion_col">Details</div>
 							</div>
 						</li>
 					</ul>
@@ -62,6 +63,7 @@
 								</div>
 								</div></div>
 								<div clas="dd_appion_col" data-th="'.$this->ts_functions->getlanguage('note', 'profile', 'solo' ).'"><div class="td_content">'.$soloApp['apo_note'].'</div></div> 
+								<div clas="dd_appion_col"><a href="'.base_url('appointments/details/'.$soloApp['apo_id']).'">Details</a></div> 
 							</div>
 						</li>';
 					  }
@@ -89,7 +91,8 @@
 								<div clas="dd_appion_col" data-th="'.$this->ts_functions->getlanguage('action', 'profile', 'solo' ).'"><div class="td_content">
 								- 
 								</div></div>
-								<div clas="dd_appion_col" data-th="'.$this->ts_functions->getlanguage('note', 'profile', 'solo' ).'"><div class="td_content">'.$soloApp['apo_note'].'</div></div> 
+								<div clas="dd_appion_col" data-th="'.$this->ts_functions->getlanguage('note', 'profile', 'solo' ).'"><div class="td_content">'.$soloApp['apo_note'].'</div></div>
+								<div clas="dd_appion_col"><a href="'.base_url('appointments/details/'.$soloApp['apo_id']).'">Details</a></div> 
 							</div>
 						</li>';
 					  }
